@@ -1,5 +1,6 @@
 package ir.smartdevelop.eram.showcaseview;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -36,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
                 .setContentText("Guide Description Text\n .....Guide Description Text\n .....Guide Description Text .....")
                 .setGravity(Gravity.center)
                 .setDismissType(DismissType.selfView)
+                .setNextText("next")
+                .setCloseText("close")
+                .setNextBtnTextSize(20)
+                .setCloseBtnTextSize(20)
+                .setNextBtnColor(R.color.colorAccent)
+                .setCloseBtnColor(R.color.colorPrimaryDark)
+                .setCloseBtnTextTypeFace(Typeface.DEFAULT_BOLD)
+                .setNextBtnTextTypeFace(Typeface.DEFAULT_BOLD)
                 .setTargetView(view1)
                 .setGuideListener(new GuideListener() {
                     @Override

@@ -10,6 +10,7 @@ import android.text.Spannable;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,12 @@ class GuideMessageView extends LinearLayout {
 
     private TextView mTitleTextView;
     private TextView mContentTextView;
+
+    private TextView mNextBtnText;
+    private TextView mCloseBtnText;
+
+    private ImageView mNextBtnIcon;
+    private ImageView mCloseBtnIcon;
 
 
     GuideMessageView(Context context) {
@@ -54,6 +61,26 @@ class GuideMessageView extends LinearLayout {
         mContentTextView.setPadding(padding, paddingBetween, padding, padding);
         mContentTextView.setGravity(Gravity.CENTER);
         addView(mContentTextView, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        mNextBtnText = new TextView(context);
+        mNextBtnText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+        mNextBtnText.setPadding(padding, paddingBetween, padding, padding);
+        mNextBtnText.setGravity(Gravity.CENTER);
+        addView(mNextBtnText, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        mCloseBtnText = new TextView(context);
+        mCloseBtnText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+        mCloseBtnText.setPadding(padding, paddingBetween, padding, padding);
+        mCloseBtnText.setGravity(Gravity.CENTER);
+        addView(mCloseBtnText, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        mNextBtnIcon = new ImageView(context);
+        mNextBtnIcon.setPadding(padding, paddingBetween, padding, padding);
+        addView(mNextBtnIcon, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        mCloseBtnIcon = new ImageView(context);
+        mCloseBtnIcon.setPadding(padding, paddingBetween, padding, padding);
+        addView(mCloseBtnIcon, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
 
@@ -68,6 +95,38 @@ class GuideMessageView extends LinearLayout {
 
     public void setContentText(String content) {
         mContentTextView.setText(content);
+    }
+
+    public void setNextBtnIcon(int content) {
+        mNextBtnIcon.setBackgroundResource(content);
+    }
+    public void setCloseBtnIcon(int content) {
+        mCloseBtnIcon.setBackgroundResource(content);
+    }
+
+    public void setNextBtnText(String content) {
+        mNextBtnText.setText(content);
+    }
+    public void setCloseBtnText(String content) {
+        mCloseBtnText.setText(content);
+    }
+    public void setNextBtnTextTypeFace(Typeface typeFace) {
+        mNextBtnText.setTypeface(typeFace);
+    }
+    public void setCloseBtnTextTypeFace(Typeface typeFace) {
+        mCloseBtnText.setTypeface(typeFace);
+    }
+    public void setNextBtnTextSize(int size) {
+        mNextBtnText.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+    }
+    public void setCloseBtnTextSize(int size) {
+        mCloseBtnText.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+    }
+    public void setCloseBtnTextColor(int color) {
+        mCloseBtnText.setTextColor(color);
+    }
+    public void setNextBtnTextColor(int color) {
+        mNextBtnText.setTextColor(color);
     }
 
     public void setContentSpan(Spannable content) {

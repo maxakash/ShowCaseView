@@ -48,7 +48,7 @@ public class GuideView extends FrameLayout {
     private static final int RADIUS_SIZE_TARGET_RECT       = 15;
     private static final int MARGIN_INDICATOR              = 15;
 
-    private static final int BACKGROUND_COLOR              = 0x99000000;
+    private static final int BACKGROUND_COLOR              = 0xD9000000;
     private static final int CIRCLE_INNER_INDICATOR_COLOR  = 0xffcccccc;
     private static final int CIRCLE_INDICATOR_COLOR        = Color.WHITE;
     private static final int LINE_INDICATOR_COLOR          = Color.WHITE;
@@ -384,6 +384,18 @@ public class GuideView extends FrameLayout {
     public void setContentText(String str) {
         mMessageView.setContentText(str);
     }
+    public void setNextBtnText(String str) {
+        mMessageView.setNextBtnText(str);
+    }
+    public void setCloseBtnText(String str) {
+        mMessageView.setCloseBtnText(str);
+    }
+    public void setNextBtnIcon(int content) {
+        mMessageView.setNextBtnIcon(content);
+    }
+    public void setCloseBtnIcon(int content) {
+        mMessageView.setCloseBtnIcon(content);
+    }
 
 
     public void setContentSpan(Spannable span) {
@@ -393,7 +405,12 @@ public class GuideView extends FrameLayout {
     public void setTitleTypeFace(Typeface typeFace) {
         mMessageView.setTitleTypeFace(typeFace);
     }
-
+    public void setNextBtnTextTypeFace(Typeface typeFace) {
+        mMessageView.setNextBtnTextTypeFace(typeFace);
+    }
+    public void setCloseBtnTextTypeFace(Typeface typeFace) {
+        mMessageView.setCloseBtnTextTypeFace(typeFace);
+    }
     public void setContentTypeFace(Typeface typeFace) {
         mMessageView.setContentTypeFace(typeFace);
     }
@@ -401,6 +418,18 @@ public class GuideView extends FrameLayout {
 
     public void setTitleTextSize(int size) {
         mMessageView.setTitleTextSize(size);
+    }
+    public void setNextBtnTextSize(int size) {
+        mMessageView.setNextBtnTextSize(size);
+    }
+    public void setCloseBtnTextSize(int size) {
+        mMessageView.setCloseBtnTextSize(size);
+    }
+    public void setCloseBtnTextColor(int color) {
+        mMessageView.setCloseBtnTextColor(color);
+    }
+    public void setNextBtnTextColor(int color) {
+        mMessageView.setNextBtnTextColor(color);
     }
 
 
@@ -411,15 +440,21 @@ public class GuideView extends FrameLayout {
 
     public static class Builder {
         private View targetView;
-        private String title, contentText;
+        private String title, contentText,nextBtnText,closeBtnText;
         private Gravity gravity;
         private DismissType dismissType;
         private Context context;
         private Spannable contentSpan;
-        private Typeface titleTypeFace, contentTypeFace;
+        private Typeface titleTypeFace, contentTypeFace,nextBtnTextTypeFace,closeBtnTextTypeFace;
         private GuideListener guideListener;
         private int titleTextSize;
         private int contentTextSize;
+        private int closeBtnIcon;
+        private int nextBtnIcon;
+        private int closeBtnColor;
+        private int nextBtnColor;
+        private int nextBtnTextSize;
+        private int closeBtnTextSize;
         private float lineIndicatorHeight;
         private float lineIndicatorWidthSize;
         private float circleIndicatorSize;
@@ -455,6 +490,14 @@ public class GuideView extends FrameLayout {
             return this;
         }
 
+        public Builder setNextText(String nextBtnText) {
+            this.nextBtnText = nextBtnText;
+            return this;
+        }
+        public Builder setCloseText(String closeBtnText) {
+            this.closeBtnText = closeBtnText;
+            return this;
+        }
         /**
          * defining a description for the target view
          *
@@ -485,6 +528,14 @@ public class GuideView extends FrameLayout {
             return this;
         }
 
+        public Builder setNextBtnTextTypeFace(Typeface typeFace) {
+            this.nextBtnTextTypeFace = typeFace;
+            return this;
+        }
+        public Builder setCloseBtnTextTypeFace(Typeface typeFace) {
+            this.closeBtnTextTypeFace = typeFace;
+            return this;
+        }
         /**
          * adding a listener on show case view
          *
@@ -516,6 +567,32 @@ public class GuideView extends FrameLayout {
             return this;
         }
 
+        public Builder setNextBtnTextSize(int size) {
+            this.nextBtnTextSize = size;
+            return this;
+        }
+
+        public Builder setCloseBtnTextSize(int size) {
+            this.closeBtnTextSize = size;
+            return this;
+        }
+
+        public Builder setNextBtnIcon(int content) {
+            this.nextBtnIcon = content;
+            return this;
+        }
+        public Builder setCloseBtnIcon(int content) {
+            this.closeBtnIcon = content;
+            return this;
+        }
+        public Builder setNextBtnColor(int color) {
+            this.nextBtnColor = color;
+            return this;
+        }
+        public Builder setCloseBtnColor(int color) {
+            this.closeBtnColor = color;
+            return this;
+        }
         /**
          * the defined text size overrides any defined size in the default or provided style
          *
@@ -612,6 +689,34 @@ public class GuideView extends FrameLayout {
             if (guideListener != null) {
                 guideView.mGuideListener = guideListener;
             }
+            ////////////////
+            if (nextBtnText != null)
+                guideView.setNextBtnText(nextBtnText);
+            if (closeBtnText != null)
+                guideView.setCloseBtnText(closeBtnText);
+
+            if (nextBtnTextSize != 0)
+                guideView.setNextBtnTextSize(nextBtnTextSize);
+            if (closeBtnTextSize != 0)
+                guideView.setCloseBtnTextSize(closeBtnTextSize);
+
+            if (nextBtnTextTypeFace != null) {
+                guideView.setNextBtnTextTypeFace(nextBtnTextTypeFace);
+            }
+            if (closeBtnTextTypeFace != null) {
+                guideView.setCloseBtnTextTypeFace(closeBtnTextTypeFace);
+            }
+
+            if (nextBtnIcon != -1)
+                guideView.setNextBtnIcon(nextBtnIcon);
+            if (closeBtnIcon != -1)
+                guideView.setCloseBtnIcon(closeBtnIcon);
+
+            if (nextBtnColor != -1)
+                guideView.setNextBtnTextColor(nextBtnColor);
+            if (closeBtnColor != -1)
+                guideView.setCloseBtnTextColor(closeBtnColor);
+            /////////////////
             if (lineIndicatorHeight != 0) {
                 guideView.indicatorHeight = lineIndicatorHeight * density;
             }

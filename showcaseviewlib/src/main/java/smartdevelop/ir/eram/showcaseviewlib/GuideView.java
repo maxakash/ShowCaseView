@@ -38,26 +38,26 @@ public class GuideView extends FrameLayout {
 
     static final String TAG = "GuideView";
 
-    private static final int INDICATOR_HEIGHT              = 40;
-    private static final int MESSAGE_VIEW_PADDING          = 5;
-    private static final int SIZE_ANIMATION_DURATION       = 700;
-    private static final int APPEARING_ANIMATION_DURATION  = 400;
-    private static final int CIRCLE_INDICATOR_SIZE         = 6;
-    private static final int LINE_INDICATOR_WIDTH_SIZE     = 3;
-    private static final int STROKE_CIRCLE_INDICATOR_SIZE  = 3;
-    private static final int RADIUS_SIZE_TARGET_RECT       = 15;
-    private static final int MARGIN_INDICATOR              = 15;
+    private static final int INDICATOR_HEIGHT = 40;
+    private static final int MESSAGE_VIEW_PADDING = 5;
+    private static final int SIZE_ANIMATION_DURATION = 700;
+    private static final int APPEARING_ANIMATION_DURATION = 400;
+    private static final int CIRCLE_INDICATOR_SIZE = 6;
+    private static final int LINE_INDICATOR_WIDTH_SIZE = 3;
+    private static final int STROKE_CIRCLE_INDICATOR_SIZE = 3;
+    private static final int RADIUS_SIZE_TARGET_RECT = 15;
+    private static final int MARGIN_INDICATOR = 15;
 
-    private static final int BACKGROUND_COLOR              = 0xD9000000;
-    private static final int CIRCLE_INNER_INDICATOR_COLOR  = 0xffcccccc;
-    private static final int CIRCLE_INDICATOR_COLOR        = Color.WHITE;
-    private static final int LINE_INDICATOR_COLOR          = Color.WHITE;
+    private static final int BACKGROUND_COLOR = 0xD9000000;
+    private static final int CIRCLE_INNER_INDICATOR_COLOR = 0xffcccccc;
+    private static final int CIRCLE_INDICATOR_COLOR = Color.WHITE;
+    private static final int LINE_INDICATOR_COLOR = Color.WHITE;
 
-    private final Paint selfPaint           = new Paint();
-    private final Paint paintLine           = new Paint();
-    private final Paint paintCircle         = new Paint();
-    private final Paint paintCircleInner    = new Paint();
-    private final Paint targetPaint         = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint selfPaint = new Paint();
+    private final Paint paintLine = new Paint();
+    private final Paint paintCircle = new Paint();
+    private final Paint paintCircleInner = new Paint();
+    private final Paint targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Xfermode X_FER_MODE_CLEAR = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
 
     private View target;
@@ -74,7 +74,7 @@ public class GuideView extends FrameLayout {
     private float circleIndicatorSizeFinal;
     private float circleInnerIndicatorSize = 0;
     private float lineIndicatorWidthSize;
-    private int   messageViewPadding;
+    private int messageViewPadding;
     private float marginGuide;
     private float strokeCircleWidth;
     private float indicatorHeight;
@@ -323,7 +323,7 @@ public class GuideView extends FrameLayout {
         postInvalidate();
     }
 
-    public void updateGuideViewLocation(){
+    public void updateGuideViewLocation() {
         requestLayout();
     }
 
@@ -384,17 +384,29 @@ public class GuideView extends FrameLayout {
     public void setContentText(String str) {
         mMessageView.setContentText(str);
     }
+
     public void setNextBtnText(String str) {
         mMessageView.setNextBtnText(str);
     }
+
     public void setCloseBtnText(String str) {
         mMessageView.setCloseBtnText(str);
     }
+
     public void setNextBtnIcon(int content) {
         mMessageView.setNextBtnIcon(content);
     }
+
     public void setCloseBtnIcon(int content) {
         mMessageView.setCloseBtnIcon(content);
+    }
+
+    public void setNextBtnListener(OnClickListener listener) {
+        mMessageView.setNextBtnListener(listener);
+    }
+
+    public void setCloseBtnListener(OnClickListener listener) {
+        mMessageView.setCloseBtnListener(listener);
     }
 
 
@@ -405,12 +417,15 @@ public class GuideView extends FrameLayout {
     public void setTitleTypeFace(Typeface typeFace) {
         mMessageView.setTitleTypeFace(typeFace);
     }
+
     public void setNextBtnTextTypeFace(Typeface typeFace) {
         mMessageView.setNextBtnTextTypeFace(typeFace);
     }
+
     public void setCloseBtnTextTypeFace(Typeface typeFace) {
         mMessageView.setCloseBtnTextTypeFace(typeFace);
     }
+
     public void setContentTypeFace(Typeface typeFace) {
         mMessageView.setContentTypeFace(typeFace);
     }
@@ -419,15 +434,19 @@ public class GuideView extends FrameLayout {
     public void setTitleTextSize(int size) {
         mMessageView.setTitleTextSize(size);
     }
+
     public void setNextBtnTextSize(int size) {
         mMessageView.setNextBtnTextSize(size);
     }
+
     public void setCloseBtnTextSize(int size) {
         mMessageView.setCloseBtnTextSize(size);
     }
+
     public void setCloseBtnTextColor(int color) {
         mMessageView.setCloseBtnTextColor(color);
     }
+
     public void setNextBtnTextColor(int color) {
         mMessageView.setNextBtnTextColor(color);
     }
@@ -440,15 +459,17 @@ public class GuideView extends FrameLayout {
 
     public static class Builder {
         private View targetView;
-        private String title, contentText,nextBtnText,closeBtnText;
+        private String title, contentText, nextBtnText, closeBtnText;
         private Gravity gravity;
         private DismissType dismissType;
         private Context context;
         private Spannable contentSpan;
-        private Typeface titleTypeFace, contentTypeFace,nextBtnTextTypeFace,closeBtnTextTypeFace;
+        private Typeface titleTypeFace, contentTypeFace, nextBtnTextTypeFace, closeBtnTextTypeFace;
         private GuideListener guideListener;
         private int titleTextSize;
         private int contentTextSize;
+        private OnClickListener nextBtnListener;
+        private OnClickListener closeBtnListener;
         private int closeBtnIcon;
         private int nextBtnIcon;
         private int closeBtnColor;
@@ -494,10 +515,12 @@ public class GuideView extends FrameLayout {
             this.nextBtnText = nextBtnText;
             return this;
         }
+
         public Builder setCloseText(String closeBtnText) {
             this.closeBtnText = closeBtnText;
             return this;
         }
+
         /**
          * defining a description for the target view
          *
@@ -532,10 +555,12 @@ public class GuideView extends FrameLayout {
             this.nextBtnTextTypeFace = typeFace;
             return this;
         }
+
         public Builder setCloseBtnTextTypeFace(Typeface typeFace) {
             this.closeBtnTextTypeFace = typeFace;
             return this;
         }
+
         /**
          * adding a listener on show case view
          *
@@ -581,18 +606,22 @@ public class GuideView extends FrameLayout {
             this.nextBtnIcon = content;
             return this;
         }
+
         public Builder setCloseBtnIcon(int content) {
             this.closeBtnIcon = content;
             return this;
         }
+
         public Builder setNextBtnColor(int color) {
             this.nextBtnColor = color;
             return this;
         }
+
         public Builder setCloseBtnColor(int color) {
             this.closeBtnColor = color;
             return this;
         }
+
         /**
          * the defined text size overrides any defined size in the default or provided style
          *
@@ -611,6 +640,16 @@ public class GuideView extends FrameLayout {
          */
         public Builder setDismissType(DismissType dismissType) {
             this.dismissType = dismissType;
+            return this;
+        }
+
+        public Builder setNextBtnListener(OnClickListener listener) {
+            this.nextBtnListener = listener;
+            return this;
+        }
+
+        public Builder setCloseBtnListener(OnClickListener listener) {
+            this.closeBtnListener = listener;
             return this;
         }
 
@@ -711,6 +750,11 @@ public class GuideView extends FrameLayout {
                 guideView.setNextBtnIcon(nextBtnIcon);
             if (closeBtnIcon != -1)
                 guideView.setCloseBtnIcon(closeBtnIcon);
+
+            if (nextBtnListener != null)
+                guideView.setNextBtnListener(nextBtnListener);
+            if (closeBtnListener != null)
+                guideView.setCloseBtnListener(closeBtnListener);
 
             if (nextBtnColor != -1)
                 guideView.setNextBtnTextColor(nextBtnColor);

@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.text.Spannable;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -31,6 +33,8 @@ class GuideMessageView extends LinearLayout {
 
     private ImageView mNextBtnIcon;
     private ImageView mCloseBtnIcon;
+
+    private ConstraintLayout messageView;
 
 
     GuideMessageView(Context context) {
@@ -75,14 +79,21 @@ class GuideMessageView extends LinearLayout {
         addView(mCloseBtnText, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mNextBtnIcon = new ImageView(context);
+        int idNext=100;
+        mNextBtnIcon.setId(idNext);
         mNextBtnIcon.setPadding(padding, paddingBetween, padding, padding);
         addView(mNextBtnIcon, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mCloseBtnIcon = new ImageView(context);
+        int idClose=101;
+        mCloseBtnIcon.setId(idClose);
         mCloseBtnIcon.setPadding(padding, paddingBetween, padding, padding);
         addView(mCloseBtnIcon, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-    }
 
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.connect(mNextBtnIcon.getId(),ConstraintSet.START,mCloseBtnIcon.getId(),ConstraintSet.END);
+
+    }
 
     public void setTitle(String title) {
         if (title == null) {
@@ -102,6 +113,13 @@ class GuideMessageView extends LinearLayout {
     }
     public void setCloseBtnIcon(int content) {
         mCloseBtnIcon.setBackgroundResource(content);
+    }
+
+    public void setNextBtnListener(OnClickListener listener) {
+        mNextBtnText.setOnClickListener(listener);
+    }
+    public void setCloseBtnListener(OnClickListener listener) {
+        mCloseBtnText.setOnClickListener(listener);
     }
 
     public void setNextBtnText(String content) {

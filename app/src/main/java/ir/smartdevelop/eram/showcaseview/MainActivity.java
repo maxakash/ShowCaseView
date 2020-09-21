@@ -36,36 +36,19 @@ public class MainActivity extends AppCompatActivity {
         view5 = findViewById(R.id.view5);
 
         builder = new GuideView.Builder(this)
-                .setTitle("Guide Title Text")
+//                .setTitle("Guide Title Text")
                 .setContentText("Guide Description Text\n .....Guide Description Text\n .....Guide Description Text .....")
+                .setContentTextSize(15)
                 .setGravity(Gravity.center)
-                .setDismissType(DismissType.selfView)
+                .setDismissType(DismissType.anywhere)
                 .setNextText("next")
                 .setCloseText("close")
-                .setNextBtnTextSize(20)
-                .setCloseBtnTextSize(20)
+                .setNextBtnTextSize(17)
+                .setCloseBtnTextSize(17)
                 .setNextBtnListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switch (v.getId()) {
-                            case R.id.view1:
-                                builder.setTargetView(view2).build();
-                                break;
-                            case R.id.view2:
-                                builder.setTargetView(view3).build();
-                                break;
-                            case R.id.view3:
-                                builder.setTargetView(view4).build();
-                                break;
-                            case R.id.view4:
-                                builder.setTargetView(view5).build();
-                                break;
-                            case R.id.view5:
-                                return;
-                        }
                         Toast.makeText(context, "next", Toast.LENGTH_SHORT).show();
-                        mGuideView = builder.build();
-                        mGuideView.show();
                     }
                 })
                 .setCloseBtnListener(new View.OnClickListener() {

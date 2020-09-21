@@ -39,7 +39,7 @@ public class GuideView extends FrameLayout {
     static final String TAG = "GuideView";
 
     private static final int INDICATOR_HEIGHT = 40;
-    private static final int MESSAGE_VIEW_PADDING = 5;
+    private static final int MESSAGE_VIEW_PADDING = 4;
     private static final int SIZE_ANIMATION_DURATION = 700;
     private static final int APPEARING_ANIMATION_DURATION = 400;
     private static final int CIRCLE_INDICATOR_SIZE = 6;
@@ -377,9 +377,9 @@ public class GuideView extends FrameLayout {
         mIsShowing = true;
     }
 
-    public void setTitle(String str) {
-        mMessageView.setTitle(str);
-    }
+//    public void setTitle(String str) {
+//        mMessageView.setTitle(str);
+//    }
 
     public void setContentText(String str) {
         mMessageView.setContentText(str);
@@ -414,9 +414,9 @@ public class GuideView extends FrameLayout {
         mMessageView.setContentSpan(span);
     }
 
-    public void setTitleTypeFace(Typeface typeFace) {
-        mMessageView.setTitleTypeFace(typeFace);
-    }
+//    public void setTitleTypeFace(Typeface typeFace) {
+//        mMessageView.setTitleTypeFace(typeFace);
+//    }
 
     public void setNextBtnTextTypeFace(Typeface typeFace) {
         mMessageView.setNextBtnTextTypeFace(typeFace);
@@ -431,9 +431,9 @@ public class GuideView extends FrameLayout {
     }
 
 
-    public void setTitleTextSize(int size) {
-        mMessageView.setTitleTextSize(size);
-    }
+//    public void setTitleTextSize(int size) {
+//        mMessageView.setTitleTextSize(size);
+//    }
 
     public void setNextBtnTextSize(int size) {
         mMessageView.setNextBtnTextSize(size);
@@ -459,14 +459,13 @@ public class GuideView extends FrameLayout {
 
     public static class Builder {
         private View targetView;
-        private String title, contentText, nextBtnText, closeBtnText;
+        private String contentText, nextBtnText, closeBtnText;
         private Gravity gravity;
         private DismissType dismissType;
         private Context context;
         private Spannable contentSpan;
-        private Typeface titleTypeFace, contentTypeFace, nextBtnTextTypeFace, closeBtnTextTypeFace;
+        private Typeface  contentTypeFace, nextBtnTextTypeFace, closeBtnTextTypeFace;
         private GuideListener guideListener;
-        private int titleTextSize;
         private int contentTextSize;
         private OnClickListener nextBtnListener;
         private OnClickListener closeBtnListener;
@@ -504,12 +503,12 @@ public class GuideView extends FrameLayout {
         /**
          * defining a title
          *
-         * @param title a title. for example: submit button.
+//         * @param title a title. for example: submit button.
          **/
-        public Builder setTitle(String title) {
-            this.title = title;
-            return this;
-        }
+//        public Builder setTitle(String title) {
+//            this.title = title;
+//            return this;
+//        }
 
         public Builder setNextText(String nextBtnText) {
             this.nextBtnText = nextBtnText;
@@ -576,10 +575,10 @@ public class GuideView extends FrameLayout {
          *
          * @param typeFace a instance of type face (font family)
          **/
-        public Builder setTitleTypeFace(Typeface typeFace) {
-            this.titleTypeFace = typeFace;
-            return this;
-        }
+//        public Builder setTitleTypeFace(Typeface typeFace) {
+//            this.titleTypeFace = typeFace;
+//            return this;
+//        }
 
         /**
          * the defined text size overrides any defined size in the default or provided style
@@ -628,10 +627,10 @@ public class GuideView extends FrameLayout {
          * @param size title text by sp unit
          * @return builder
          */
-        public Builder setTitleTextSize(int size) {
-            this.titleTextSize = size;
-            return this;
-        }
+//        public Builder setTitleTextSize(int size) {
+//            this.titleTextSize = size;
+//            return this;
+//        }
 
         /**
          * this method defining the type of dismissing function
@@ -710,18 +709,18 @@ public class GuideView extends FrameLayout {
             guideView.dismissType = dismissType != null ? dismissType : DismissType.targetView;
             float density = context.getResources().getDisplayMetrics().density;
 
-            guideView.setTitle(title);
+//            guideView.setTitle(title);
             if (contentText != null)
                 guideView.setContentText(contentText);
-            if (titleTextSize != 0)
-                guideView.setTitleTextSize(titleTextSize);
+//            if (titleTextSize != 0)
+//                guideView.setTitleTextSize(titleTextSize);
             if (contentTextSize != 0)
                 guideView.setContentTextSize(contentTextSize);
             if (contentSpan != null)
                 guideView.setContentSpan(contentSpan);
-            if (titleTypeFace != null) {
-                guideView.setTitleTypeFace(titleTypeFace);
-            }
+//            if (titleTypeFace != null) {
+//                guideView.setTitleTypeFace(titleTypeFace);
+//            }
             if (contentTypeFace != null) {
                 guideView.setContentTypeFace(contentTypeFace);
             }

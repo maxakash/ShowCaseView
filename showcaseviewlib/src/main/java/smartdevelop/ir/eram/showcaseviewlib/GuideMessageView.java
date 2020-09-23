@@ -44,7 +44,7 @@ class GuideMessageView extends LinearLayout {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
 
-        final int padding = (int) (3 * density);
+        final int padding = (int) (6 * density);
         final int paddingBetween = (int) (3 * density);
 
 //        mTitleTextView = new TextView(context);

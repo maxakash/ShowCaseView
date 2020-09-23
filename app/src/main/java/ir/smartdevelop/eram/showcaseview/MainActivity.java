@@ -1,13 +1,12 @@
 package ir.smartdevelop.eram.showcaseview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
-
 import smartdevelop.ir.eram.showcaseviewlib.GuideView;
 import smartdevelop.ir.eram.showcaseviewlib.config.DismissType;
 import smartdevelop.ir.eram.showcaseviewlib.config.Gravity;
@@ -37,14 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
         builder = new GuideView.Builder(this)
 //                .setTitle("Guide Title Text")
-                .setContentText("Guide Description Text\n .....Guide Description Text\n .....Guide Description Text .....")
-                .setContentTextSize(15)
+                .setContentText("Keep track of your loved one’s whereabouts using a real-time location tracker")
+                .setContentTextSize(20)
                 .setGravity(Gravity.center)
                 .setDismissType(DismissType.anywhere)
-                .setNextText("next")
-                .setCloseText("close")
-                .setNextBtnTextSize(17)
-                .setCloseBtnTextSize(17)
+                .setNextText("Next")
+                .setCloseText("Close")
+                .setNextBtnIcon(R.drawable.ic_launcher_background)
+                .setCloseBtnIcon(R.drawable.ic_launcher_background)
+                .setNextBtnTextSize(22)
+                .setCloseBtnTextSize(22)
+                .setNextBtnColor(Color.BLACK)
+                .setCloseBtnColor(Color.BLACK)
                 .setNextBtnListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -58,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(context, "close", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNextBtnColor(R.color.colorAccent)
-                .setCloseBtnColor(R.color.colorPrimaryDark)
                 .setCloseBtnTextTypeFace(Typeface.DEFAULT_BOLD)
                 .setNextBtnTextTypeFace(Typeface.DEFAULT_BOLD)
                 .setTargetView(view1)

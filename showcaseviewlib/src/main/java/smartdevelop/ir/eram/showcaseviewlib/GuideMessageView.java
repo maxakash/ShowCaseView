@@ -23,7 +23,7 @@ class GuideMessageView extends LinearLayout {
     private Paint mPaint;
     private RectF mRect;
 
-//    private TextView mTitleTextView;
+    private TextView mTitleTextView;
     private TextView mContentTextView;
 
     private TextView mNextBtnText;
@@ -47,12 +47,12 @@ class GuideMessageView extends LinearLayout {
         final int padding = (int) (6 * density);
         final int paddingBetween = (int) (3 * density);
 
-//        mTitleTextView = new TextView(context);
-//        mTitleTextView.setPadding(padding, padding, padding, paddingBetween);
-//        mTitleTextView.setGravity(Gravity.CENTER);
-//        mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-//        mTitleTextView.setTextColor(Color.BLACK);
-//        addView(mTitleTextView, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+       mTitleTextView = new TextView(context);
+       mTitleTextView.setPadding(padding, padding, padding, paddingBetween);
+       mTitleTextView.setGravity(Gravity.CENTER);
+       mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+       mTitleTextView.setTextColor(Color.BLACK);
+       addView(mTitleTextView, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mContentTextView = new TextView(context);
         mContentTextView.setTextColor(Color.BLACK);
@@ -79,17 +79,18 @@ class GuideMessageView extends LinearLayout {
 
         mCloseBtnIcon = new ImageView(context);
         mCloseBtnIcon.setPadding(padding, paddingBetween, padding, padding);
+        mCloseBtnIcon.setGravity(Gravity.TOP);
         addView(mCloseBtnIcon, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     }
 
-//    public void setTitle(String title) {
-//        if (title == null) {
-//            removeView(mTitleTextView);
-//            return;
-//        }
-//        mTitleTextView.setText(title);
-//    }
+   public void setTitle(String title) {
+       if (title == null) {
+           removeView(mTitleTextView);
+           return;
+       }
+       mTitleTextView.setText(title);
+   }
 
 
     public void setContentText(String content) {
@@ -152,13 +153,13 @@ class GuideMessageView extends LinearLayout {
         mContentTextView.setTypeface(typeFace);
     }
 
-//    public void setTitleTypeFace(Typeface typeFace) {
-//        mTitleTextView.setTypeface(typeFace);
-//    }
-//
-//    public void setTitleTextSize(int size) {
-//        mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-//    }
+   public void setTitleTypeFace(Typeface typeFace) {
+       mTitleTextView.setTypeface(typeFace);
+   }
+
+   public void setTitleTextSize(int size) {
+       mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+   }
 
     public void setContentTextSize(int size) {
         mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
